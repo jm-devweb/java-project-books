@@ -1,16 +1,16 @@
 /**
- * Class Word
+ * Class Stat
  *
  */
-public class Word  implements Comparable<Word> {
+public class Stat  implements Comparable<Stat> {
 
     // **************************************************
     // Fiels :
     // String strWord : Word
     // Integer intOccurrence : Occurence in this text
     // **************************************************
-    final String strWord ;
-    final Long lngOccurrence ;
+    final String strBook;
+    final Float fltPourcent;
 
     // **************************************************
     // Constructors
@@ -18,12 +18,12 @@ public class Word  implements Comparable<Word> {
     /**
      * Parameterized constructor.
      *
-     * @param strWord : New Word
-     * @param lngOccurence : Occurence in the text
+     * @param strBook : New Word
+     * @param fltPourcent : Occurence in the text
      */
-    public Word(String strWord, Long lngOccurence) {
-        this.strWord = strWord ;
-        this.lngOccurrence = lngOccurence ;
+    public Stat(String strBook, Float fltPourcent) {
+        this.strBook = strBook ;
+        this.fltPourcent = fltPourcent ;
     }
 
     // **************************************************
@@ -38,9 +38,9 @@ public class Word  implements Comparable<Word> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Word word = (Word) o;
+        Stat stat = (Stat) o;
 
-        return strWord.equals(word.strWord);
+        return strBook.equals(stat.strBook);
     }
 
     /**
@@ -51,12 +51,12 @@ public class Word  implements Comparable<Word> {
      * @return int
      */
     @Override
-    public int compareTo(Word oOtherWord) {
+    public int compareTo(Stat oOtherStat) {
         int intResult = 0 ;
 
-        intResult = this.lngOccurrence.compareTo(oOtherWord.lngOccurrence) * -1 ;
+        intResult = this.fltPourcent.compareTo(oOtherStat.fltPourcent) * -1 ;
         if(intResult == 0 ) {
-            intResult = this.strWord.compareTo(oOtherWord.strWord) ;
+            intResult = this.strBook.compareTo(oOtherStat.strBook) ;
         }
         return (intResult) ;
     }
@@ -68,6 +68,6 @@ public class Word  implements Comparable<Word> {
      */
     @Override
     public int hashCode() {
-        return (strWord.hashCode());
+        return (strBook.hashCode());
     }
 }

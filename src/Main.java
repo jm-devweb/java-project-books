@@ -197,11 +197,12 @@ public class Main {
                 if (oBookCollection.getSelectIndex() != -1) {
                     strResult += "le nombre de mot : " + oBookCollection.getSelectBook().lWords.size() + "\n";
                     strResult += "******************************************" + "\n";
-                  strResult += "le top des mots 50 :\n" + oBookCollection.getSelectBook().topOftheWord(50) + "\n";
+                    strResult += "le top des mots 50 :\n" + oBookCollection.getSelectBook().topOftheWord(50) + "\n";
                     strResult += "******************************************" + "\n";
-
-                    //
-                    //               strResult += "la liste des mots unique :\n" + oBookCollection.toUniqueWord() + "\n";
+                    strResult += "la liste des mots unique :\n" + oBookCollection.toUniqueWord() + "\n";
+                    strResult += "******************************************" + "\n";
+                    strResult += "% des mots :\n" + oBookCollection.toPourcent() + "\n";
+                    strResult += "******************************************" + "\n";
 
                 } else {
                     strResult += "le top des mots  : vide\n";

@@ -21,8 +21,8 @@ public class Book implements Comparable<Book> {
     // **************************************************
     final String strBookName;
     final String strFileName;
-     int intNumberOfline = 0;
-    List<Word> lWords ;
+    final Integer intNumberOfline ;
+    final List<Word> lWords ;
 
     // **************************************************
     // Constructors
@@ -50,7 +50,7 @@ public class Book implements Comparable<Book> {
                     lCurrentWords.add(m1.group().toLowerCase());
                 }
             }
-            intNumberOfline = intIndex ;
+
             mFrequence = lCurrentWords.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
             for (Map.Entry<String, Long> entry : mFrequence.entrySet()) {
@@ -62,6 +62,7 @@ public class Book implements Comparable<Book> {
             System.out.println("Ce fichier n'existe pas :" + strNewFile);
             ;
         }
+        intNumberOfline = intIndex ;
     }
 
     // **************************************************
@@ -86,58 +87,25 @@ public class Book implements Comparable<Book> {
         return (intResult) ;
     }
 
+
+    @Override
+    public int hashCode() {
+        return strBookName.hashCode();
+    }
+
     /**
      * Returns True if it's the same path.
      *
      * @return Boolean
      */
-    public boolean equals(Book oOtherBook) {
-        return (this.strFileName.equals(oOtherBook.strFileName)) ;
-    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-    /**
-     * Returns the number of line.
-     *
-     * @return int.
-     */
-    public int getIntNumberOfline() {
-        return (intNumberOfline);
-    }
+        Book book = (Book) o;
 
-    /**
-     * Returns the list of word contains in the  2 books parameter
-     *
-     * @return List of word
-     */
-    public List<Word> listIn(Book oOtherBook) {
-
-        List<Word> lResult = new ArrayList<Word>();
-        if(oOtherBook != null) {
-            for (Word oCurrentWord : this.lWords) {
-                if (oOtherBook.lWords.contains(oCurrentWord)) {
-                    lResult.add(oCurrentWord);
-                }
-            }
-        }
-        return (lResult) ;
-    }
-
-    /**
-     * Returns the list of word in the current book contains in the book parameter
-     *
-     * @return List of word
-     */
-    public List<Word> listNotIn(Book oOtherBook) {
-        List<Word> lResult = new ArrayList<Word>(this.lWords);
-
-        if(oOtherBook != null) {
-            for (Word oCurrentWord : this.lWords) {
-                if (!oOtherBook.lWords.contains(oCurrentWord)) {
-                    lResult.add(oCurrentWord);
-                }
-            }
-        }
-        return (lResult) ;
+        return strBookName.equals(book.strBookName);
     }
 
     /**
@@ -169,4 +137,7 @@ public class Book implements Comparable<Book> {
     public String toString() {
         return ("Livre : " + strBookName + " Chemin : " + strFileName);
     }
+
+
 }
+
