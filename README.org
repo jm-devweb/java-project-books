@@ -1,0 +1,62 @@
+
+# -*- mode: org; org-confirm-babel-evaluate: nil; org-babel-noweb-wrap-start: "«"; org-babel-noweb-wrap-end: "»"; ispell-local-dictionary: "fr_FR";-*-
+
+#+TITLE: Mini-projet d'initiation à Java
+#+AUTHOR: Jean-Marc Noël
+
+#+LANGUAGE: fr
+#+LANG: fr
+#+HTML_HEAD_EXTRA: <style>*{font-family: monospace !important}</style>
+
+#+BEGIN_SRC elisp :exports none :results silent
+ (setq org-ditaa-jar-path "/usr/share/ditaa/ditaa.jar")
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((ditaa . t)
+   ))
+#+END_SRC
+
+* Contexte
+
+  Le programme doit permettre de travailler sur un ensemble de fichiers
+texte correspondant à des livres.
+
+* Installation
+
+  Faire un git clone du projet https://github.com/jm-devweb/java-project-books.git
+  
+  L'archive est dans le répertoire ./out
+   
+* Utilisation
+
+  Lancer la commande java -jar java-project-books.jar [FILE]
+
+* Menu
+** Lister les fichiers
+
+   Liste des fichiers référencés.
+   
+** Ajouter un fichier
+
+   Ajoute des fichiers dans la liste de référence soit :
+#+BEGIN_VERBATIM
+1. Le chemin du fichier
+
+2. Un répertoire contenant les fichiers, seul les fichiers .txt sont pris en compte 
+#+END_VERBATIM
+
+** Supprimer un fichier
+
+   Permet de supprimer un fichier référencé.
+
+** Afficher des informations sur un livre
+
+Afficher le nombre de lignes du fichier
+
+Afficher le nombre de mots du fichier
+#+BEGIN_VERBATIM
+1. Le nombre de mot dans le fichier
+
+2. Le top 50 des mots du texte 
+#+END_VERBATIM
+
